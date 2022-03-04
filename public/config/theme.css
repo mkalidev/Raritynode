@@ -1,8 +1,22 @@
 :root {
-  --primary: #ebc908;
+  --primary: goldenrod;
   --primary-text: #1a1a1a;
-  --secondary: #ff1dec;
+  --secondary: #bbbbbb;
   --secondary-text: #ffffff;
-  --accent: #505050;
+  --accent: #010a01b1;
   --accent-text: #ffffff;
+}
+
+
+.button {
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+  width: 200px !important;
+  height: 60px;
+  border-radius: 15px !important;
+}
+
+.button:hover {
+  color: #ffffff !important;
+  background-color: goldenrod !important;
 }
