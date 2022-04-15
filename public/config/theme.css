@@ -1,5 +1,5 @@
 :root {
-  --primary: goldenrod;
+  --primary: #000;
   --primary-text: #1a1a1a;
   --secondary: #bbbbbb;
   --secondary-text: #ffffff;
@@ -18,5 +18,5 @@
 
 .button:hover {
   color: #ffffff !important;
-  background-color: goldenrod !important;
+  background-color: rgb(10, 101, 170) !important;
 }

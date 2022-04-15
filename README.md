@@ -52,21 +52,21 @@ Note: this dapp is designed to work with the intended NFT smart contract, that o
 
 ```json
 {
-  "CONTRACT_ADDRESS": "0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
-  "SCAN_LINK": "https://polygonscan.com/token/0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
+  "CONTRACT_ADDRESS": "0x3DB7F28502ace74cA2bc15199969CD4DA2A759aB",
+  "SCAN_LINK": "https://ropsten.etherscan.io/address/0x3db7f28502ace74ca2bc15199969cd4da2a759ab",
   "NETWORK": {
-    "NAME": "Polygon",
-    "SYMBOL": "Matic",
-    "ID": 137
+    "NAME": "Ropsten",
+    "SYMBOL": "ROP",
+    "ID": 3
   },
-  "NFT_NAME": "Nerdy Coder Clones",
-  "SYMBOL": "NCC",
+  "NFT_NAME": "MintNFT",
+  "SYMBOL": "MNT",
   "MAX_SUPPLY": 1000,
-  "WEI_COST": 75000000000000000,
-  "DISPLAY_COST": 0.075,
+  "WEI_COST": 100000000000000000,
+  "DISPLAY_COST": 0.1,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "OpenSea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/nerdy-coder-clones",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/MintNFT",
   "SHOW_BACKGROUND": true
 }
 ```
@@ -95,7 +95,7 @@ Now you will need to create and change the `public/favicon.ico`, `public/logo192
 Remember to update the title and description the `public/index.html` file
 
 ```html
-<title>Nerdy Coder Clones</title>
+<title>RarityNode</title>
 <meta name="description" content="Mint your Nerdy Coder Clone NFT" />
 ```
 

